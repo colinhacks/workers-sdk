@@ -119,7 +119,9 @@ async function runInfo(transformer: Sharp): Promise<Response> {
 		case "gif":
 			mime = "image/gif";
 			break;
-		case "avif":
+		// libvips reports AVIF (and other HEIF variants) under the `heif`
+		// container format; Cloudflare Images' supported HEIF variant is AVIF.
+		case "heif":
 			mime = "image/avif";
 			break;
 		default:
