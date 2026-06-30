@@ -299,7 +299,9 @@ function formatToMime(format: string | undefined): string | null {
 			return "image/webp";
 		case "gif":
 			return "image/gif";
-		case "avif":
+		// libvips reports AVIF (and other HEIF variants) under the `heif`
+		// container format; Cloudflare Images' supported HEIF variant is AVIF.
+		case "heif":
 			return "image/avif";
 		default:
 			return null;
